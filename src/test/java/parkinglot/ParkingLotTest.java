@@ -9,12 +9,14 @@ public class ParkingLotTest {
     ParkingLotSystem parkingLotSystem = null;
     Object vehicle = null;
     Owner owner = null;
+    AirportSecurity airportSecurity = null;
 
     @Before
     public void setUp() throws Exception {
         parkingLotSystem = new ParkingLotSystem();
         vehicle = new Object();
         owner = new Owner();
+        airportSecurity = new AirportSecurity();
     }
 
     @Test
@@ -78,7 +80,7 @@ public class ParkingLotTest {
     public void givenFullParkingLot_WhenOwnerKnows_ShouldReturnTrue() {
         try {
             parkingLotSystem.park(vehicle);
-            boolean isFull = owner.parkingLotIsFull();
+            boolean isFull = owner.isParkingLotFull();
             Assert.assertTrue(isFull);
         } catch (ParkingLotException e) {
             e.printStackTrace();
@@ -87,7 +89,24 @@ public class ParkingLotTest {
 
     @Test
     public void givenEmptyParkingLot_WhenOwnerKnows_ShouldReturnFalse() {
-        boolean isFull = owner.parkingLotIsFull();
+        boolean isFull = owner.isParkingLotFull();
+        Assert.assertFalse(isFull);
+    }
+
+    @Test
+    public void givenFullParkingLot_WhenAirportSecurityKnows_ShouldReturnTrue() {
+        try {
+            parkingLotSystem.park(vehicle);
+            boolean isFull = airportSecurity.isParkingLotFull();
+            Assert.assertTrue(isFull);
+        } catch (ParkingLotException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenEmptyParkingLot_WhenAirportSecurityKnows_ShouldReturnFalse() {
+        boolean isFull = airportSecurity.isParkingLotFull();
         Assert.assertFalse(isFull);
     }
 }
