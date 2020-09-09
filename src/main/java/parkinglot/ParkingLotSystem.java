@@ -23,6 +23,7 @@ public class ParkingLotSystem {
             throw new ParkingLotException("No Such Vehicle In Parking Lot");
         if (this.vehicle.equals(vehicle)){
             this.vehicle = null;
+            owner.parkingLotFull(this.vehicle != null);
         }
     }
 
