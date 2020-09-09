@@ -9,7 +9,7 @@ public class Owner {
             Owner.isFull = true;
     }
 
-    public boolean parkingLotIsFull() {
+    public boolean isParkingLotFull() {
         if (isFull)
             return true;
         return false;

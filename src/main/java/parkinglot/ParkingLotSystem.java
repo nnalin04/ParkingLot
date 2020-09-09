@@ -4,12 +4,14 @@ public class ParkingLotSystem {
 
     private Object vehicle;
     Owner owner = new Owner();
+    AirportSecurity airportSecurity = new AirportSecurity();
 
     public void park(Object vehicle) throws ParkingLotException {
         if (this.vehicle != null)
             throw new ParkingLotException("Parking Lot is Full");
         this.vehicle = vehicle;
         owner.parkingLotFull(this.vehicle != null);
+        airportSecurity.parkingLotFull(this.vehicle != null);
     }
 
     public boolean isVehicleParked(Object vehicle) {
