@@ -8,11 +8,13 @@ public class ParkingLotTest {
 
     ParkingLotSystem parkingLotSystem = null;
     Object vehicle = null;
+    Owner owner = null;
 
     @Before
     public void setUp() throws Exception {
         parkingLotSystem = new ParkingLotSystem();
         vehicle = new Object();
+        owner = new Owner();
     }
 
     @Test
@@ -70,5 +72,22 @@ public class ParkingLotTest {
             Assert.assertEquals("No Such Vehicle In Parking Lot", e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void givenFullParkingLot_WhenOwnerKnows_ShouldReturnTrue() {
+        try {
+            parkingLotSystem.park(vehicle);
+            boolean isFull = owner.parkingLotIsFull();
+            Assert.assertTrue(isFull);
+        } catch (ParkingLotException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenEmptyParkingLot_WhenOwnerKnows_ShouldReturnFalse() {
+        boolean isFull = owner.parkingLotIsFull();
+        Assert.assertFalse(isFull);
     }
 }
