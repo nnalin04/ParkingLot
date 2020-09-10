@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="parkinglot.ParkingLotTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-09-10T19:05:24" hostname="EEE1407203" time="0.136">
+<testsuite name="parkinglot.ParkingLotTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-09-10T19:35:12" hostname="EEE1407203" time="0.056">
   <properties/>
-  <testcase name="givenEmptyParkingLot_WhenOwnerKnows_ShouldReturnFalse" classname="parkinglot.ParkingLotTest" time="0.003"/>
-  <testcase name="givenNoVehicle_WhenUnpParked_ShouldReturnFalse" classname="parkinglot.ParkingLotTest" time="0.026"/>
+  <testcase name="givenEmptyParkingLot_WhenOwnerKnows_ShouldReturnFalse" classname="parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenNoVehicle_WhenUnpParked_ShouldReturnFalse" classname="parkinglot.ParkingLotTest" time="0.014"/>
   <testcase name="givenFullParkingLot_WhenOwnerKnows_ShouldReturnTrue" classname="parkinglot.ParkingLotTest" time="0.0"/>
-  <testcase name="givenCapacityIs2AndWithSimilarVehicle_ShouldBeAbleToParkTeoVehicle" classname="parkinglot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenParkingLot_WhenSpaceNotAvailable_ShouldReturnTrue" classname="parkinglot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenCapacityIs2_ShouldBeAbleToParkTeoVehicle" classname="parkinglot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenAVehicle_WhenParked_ShouldReturnTrue" classname="parkinglot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenCapacityIs2AndWithSimilarVehicle_ShouldBeAbleToParkTeoVehicle" classname="parkinglot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenParkingLot_WhenSpaceNotAvailable_ShouldReturnTrue" classname="parkinglot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenCapacityIs2_ShouldBeAbleToParkTeoVehicle" classname="parkinglot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenAVehicle_WhenParked_ShouldReturnTrue" classname="parkinglot.ParkingLotTest" time="0.001"/>
   <testcase name="givenParkingLot_WhenSpaceAvailable_ShouldReturnTrue" classname="parkinglot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenEmptyParkingLot_WhenAirportSecurityKnows_ShouldReturnFalse" classname="parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenEmptyParkingLot_WhenAirportSecurityKnows_ShouldReturnFalse" classname="parkinglot.ParkingLotTest" time="0.0"/>
   <testcase name="givenAVehicle_WhenUnParked_ShouldReturnTrue" classname="parkinglot.ParkingLotTest" time="0.001"/>
   <testcase name="givenFullParkingLot_WhenAirportSecurityKnows_ShouldReturnTrue" classname="parkinglot.ParkingLotTest" time="0.0"/>
-  <testcase name="givenUnPresentVehicle_WhenUnParked_ShouldReturnFalse" classname="parkinglot.ParkingLotTest" time="0.048"/>
+  <testcase name="givenUnPresentVehicle_WhenUnParked_ShouldReturnFalse" classname="parkinglot.ParkingLotTest" time="0.028"/>
   <testcase name="givenAVehicle_WhenAlreadyParked_ShouldReturnTrue" classname="parkinglot.ParkingLotTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[parkinglot.ParkingLotException: No Such Vehicle In Parking Lot
-	at parkinglot.ParkingLotSystem.unPark(ParkingLotSystem.java:46)
+	at parkinglot.ParkingLotSystem.unPark(ParkingLotSystem.java:43)
 	at parkinglot.ParkingLotTest.givenNoVehicle_WhenUnpParked_ShouldReturnFalse(ParkingLotTest.java:73)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -67,7 +67,7 @@
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
 	at java.lang.Thread.run(Thread.java:745)
 parkinglot.ParkingLotException: No Such Vehicle In Parking Lot
-	at parkinglot.ParkingLotSystem.unPark(ParkingLotSystem.java:46)
+	at parkinglot.ParkingLotSystem.unPark(ParkingLotSystem.java:43)
 	at parkinglot.ParkingLotTest.givenUnPresentVehicle_WhenUnParked_ShouldReturnFalse(ParkingLotTest.java:62)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)

@@ -7,10 +7,10 @@ public class ParkingLotSystem {
 
     private int capacity;
     private List vehicles;
-    ParkingLotOwner owner = null;
-    AirportSecurity airportSecurity = null;
+    private List<ParkingLotObserver> observers;
 
     public ParkingLotSystem(int capacity) {
+        this.observers = new ArrayList<>();
         vehicles = new ArrayList();
         this.capacity = capacity;
     }
@@ -19,12 +19,8 @@ public class ParkingLotSystem {
         this.capacity = capacity;
     }
 
-    public void registerOwner(ParkingLotOwner parkingLotOwner) {
-        this.owner = parkingLotOwner;
-    }
-
-    public void setAirportSecurity(AirportSecurity airportSecurity) {
-        this.airportSecurity = airportSecurity;
+    public void registerParkingLotObserver(ParkingLotObserver observer) {
+        this.observers.add(observer);
     }
 
     public void park(Object vehicle) throws ParkingLotException {
@@ -33,8 +29,9 @@ public class ParkingLotSystem {
         if (this.vehicles.contains(vehicle))
             throw new ParkingLotException("Vehicle is already parked");
         this.vehicles.add(vehicle);
-        owner.parkingLotFull(this.vehicles.size() == this.capacity);
-        airportSecurity.parkingLotFull(this.vehicles.size() == this.capacity);
+        for (ParkingLotObserver observer : observers) {
+            observer.parkingLotFull(this.vehicles.size() == this.capacity);
+        }
     }
 
     public boolean isVehicleParked(Object vehicle) {
@@ -46,7 +43,9 @@ public class ParkingLotSystem {
             throw new ParkingLotException("No Such Vehicle In Parking Lot");
         if (this.vehicles.contains(vehicle)){
             this.vehicles.remove(vehicle);
-            owner.parkingLotFull(this.vehicles.size() > this.capacity);
+            for (ParkingLotObserver observer : observers) {
+                observer.parkingLotFull(this.vehicles.size() > this.capacity);
+            }
         }
     }
 

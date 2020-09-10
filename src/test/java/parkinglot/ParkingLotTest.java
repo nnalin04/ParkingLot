@@ -17,8 +17,8 @@ public class ParkingLotTest {
         vehicle = new Object();
         owner = new ParkingLotOwner();
         airportSecurity = new AirportSecurity();
-        parkingLotSystem.registerOwner(owner);
-        parkingLotSystem.setAirportSecurity(airportSecurity);
+        parkingLotSystem.registerParkingLotObserver(owner);
+        parkingLotSystem.registerParkingLotObserver(airportSecurity);
     }
 
     @Test
