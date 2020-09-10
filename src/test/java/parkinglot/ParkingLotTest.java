@@ -8,15 +8,17 @@ public class ParkingLotTest {
 
     ParkingLotSystem parkingLotSystem = null;
     Object vehicle = null;
-    Owner owner = null;
+    ParkingLotOwner owner = null;
     AirportSecurity airportSecurity = null;
 
     @Before
     public void setUp() throws Exception {
-        parkingLotSystem = new ParkingLotSystem();
+        parkingLotSystem = new ParkingLotSystem(1);
         vehicle = new Object();
-        owner = new Owner();
+        owner = new ParkingLotOwner();
         airportSecurity = new AirportSecurity();
+        parkingLotSystem.registerOwner(owner);
+        parkingLotSystem.setAirportSecurity(airportSecurity);
     }
 
     @Test
@@ -41,13 +43,12 @@ public class ParkingLotTest {
         }
     }
 
-
     @Test
     public void givenAVehicle_WhenUnParked_ShouldReturnTrue() {
         try {
             parkingLotSystem.park(vehicle);
             parkingLotSystem.unPark(vehicle);
-            boolean isUnParked = parkingLotSystem.isVehicleUnParked();
+            boolean isUnParked = parkingLotSystem.isVehicleUnParked(vehicle);
             Assert.assertTrue(isUnParked);
         } catch (ParkingLotException e) {
             e.printStackTrace();
@@ -84,6 +85,32 @@ public class ParkingLotTest {
             Assert.assertTrue(isFull);
         } catch (ParkingLotException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenCapacityIs2_ShouldBeAbleToParkTeoVehicle() {
+        parkingLotSystem.setCapacity(2);
+        Object vehicle1 = new Object();
+        try {
+            parkingLotSystem.park(vehicle);
+            parkingLotSystem.park(vehicle1);
+            boolean isParked = parkingLotSystem.isVehicleParked(vehicle);
+            boolean isParked1 = parkingLotSystem.isVehicleParked(vehicle1);
+            Assert.assertTrue(isParked && isParked1);
+        } catch (ParkingLotException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenCapacityIs2AndWithSimilarVehicle_ShouldBeAbleToParkTeoVehicle() {
+        parkingLotSystem.setCapacity(2);
+        try {
+            parkingLotSystem.park(vehicle);
+            parkingLotSystem.park(vehicle);
+        } catch (ParkingLotException e) {
+            Assert.assertEquals("Vehicle is already parked", e.getMessage());
         }
     }
 

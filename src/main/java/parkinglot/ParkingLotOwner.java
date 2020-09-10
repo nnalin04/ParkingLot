@@ -1,6 +1,6 @@
 package parkinglot;
 
-public class AirportSecurity {
+public class ParkingLotOwner {
 
     private boolean isFull;
 
@@ -9,6 +9,10 @@ public class AirportSecurity {
     }
 
     public boolean isParkingLotFull() {
-        return isFull;
+        return this.isFull;
+    }
+
+    public boolean isParkingLotUnOccupied() {
+        return !this.isFull;
     }
 }
