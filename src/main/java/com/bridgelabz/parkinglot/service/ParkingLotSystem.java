@@ -3,14 +3,15 @@ package com.bridgelabz.parkinglot.service;
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
 import com.bridgelabz.parkinglot.observer.ParkingLotObserver;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ParkingLotSystem {
 
     private int capacity;
     private List vehicles;
     private List<ParkingLotObserver> observers;
+    Map<Object, Date> parkingTime = null;
+    Calendar calendar = Calendar.getInstance();
 
     public ParkingLotSystem(int capacity) {
         this.observers = new ArrayList<>();
@@ -40,6 +41,7 @@ public class ParkingLotSystem {
             if (position[0] > capacity || position[0] < 0)
                 throw new ParkingLotException("No such Space Present");
             this.vehicles.set(position[0] - 1, vehicle);
+            this.parkingTime.put(vehicle, calendar.getTime());
         } else if (capacity > 0) this.vehicles.set(vehicles.indexOf(null), vehicle);
         else this.vehicles.add(vehicle);
         for (ParkingLotObserver observer : observers) {
