@@ -1,6 +1,8 @@
-package parkinglot;
+package com.bridgelabz.parkinglot.model;
 
-public class ParkingLotOwner implements ParkingLotObserver{
+import com.bridgelabz.parkinglot.observer.ParkingLotObserver;
+
+public class ParkingLotOwner implements ParkingLotObserver {
 
     private boolean isFull;
 

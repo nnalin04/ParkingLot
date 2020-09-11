@@ -1,8 +1,8 @@
-package parkinglot;
+package com.bridgelabz.parkinglot.exception;
 
 public class ParkingLotException extends Exception {
 
-    ParkingLotException(String message){
+    public ParkingLotException(String message){
         super(message);
     }
 }
