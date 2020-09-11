@@ -181,4 +181,14 @@ public class ParkingLotTest {
             Assert.assertEquals("No such Space Present", e.getMessage());
         }
     }
+
+    @Test
+    public void givenAParkedVehicle_WhenPositionSearched_ShouldReturnPosition() throws ParkingLotException {
+        parkingLotSystem.setCapacity(2);
+        Object vehicle1 = new Object();
+            parkingLotSystem.park(vehicle, null);
+            parkingLotSystem.park(vehicle1, null);
+            int vehiclePosition = parkingLotSystem.getVehiclePosition(vehicle1);
+            Assert.assertEquals(2, vehiclePosition);
+    }
 }
