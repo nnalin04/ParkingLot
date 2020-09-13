@@ -1,5 +1,7 @@
 package com.bridgelabz.parkinglot.service;
 
+import com.bridgelabz.parkinglot.ParkingSlot;
+import com.bridgelabz.parkinglot.Vehicle;
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
 import com.bridgelabz.parkinglot.observer.ParkingLotObserver;
 
@@ -8,67 +10,94 @@ import java.util.*;
 public class ParkingLotSystem {
 
     private int capacity;
-    private List vehicles;
+    private List<Vehicle> vehicles;
     private List<ParkingLotObserver> observers;
-    Map<Object, Date> parkingTime = null;
-    Calendar calendar = Calendar.getInstance();
+    private Map<ParkingSlot, List<Vehicle>> parkingLotSlot;
+    private ParkingSlot slot;
 
     public ParkingLotSystem(int capacity) {
-        this.observers = new ArrayList<>();
-        vehicles = new ArrayList();
         this.capacity = capacity;
+        this.observers = new ArrayList<>();
+        this.vehicles = new ArrayList();
+        this.parkingLotSlot = new HashMap<>();
     }
 
-    public void setCapacity(int capacity) {
+    public void setParkingLot(ParkingSlot slot) {
+        List<Vehicle> vehicles = new ArrayList<>();
+        this.parkingLotSlot.put(slot, vehicles);
+    }
+
+    public void totalParkingSpace(int capacity) {
         this.capacity = capacity;
-        int k = capacity;
-        while(k != 0){
-            vehicles.add(null);
-            k--;
-        }
     }
 
     public void registerParkingLotObserver(ParkingLotObserver observer) {
         this.observers.add(observer);
     }
 
-    public void park(Object vehicle, int... position) throws ParkingLotException {
-        if (this.vehicles.size() == this.capacity && !this.vehicles.contains(null))
+    private ParkingSlot slotWithMaxSpace() {
+        ParkingSlot slots = null;
+        int minSize = 0;
+        int size = 0;
+        for (ParkingSlot slot : this.parkingLotSlot.keySet()) {
+            size = parkingLotSlot.get(slot).size();
+            if (size == 0)
+                slots = slot;
+            else if (size < minSize){
+                minSize = size;
+                slots = slot;
+            }
+        }
+        return slots;
+    }
+
+    public void park(Vehicle vehicle, ParkingSlot... slots) throws ParkingLotException {
+        if (this.vehicles.size() == this.capacity)
             throw new ParkingLotException("Parking Lot is Full");
-        if (this.vehicles.contains(vehicle))
+        if (this.parkingLotSlot.containsValue(vehicle))
             throw new ParkingLotException("Vehicle is already parked");
-        if (position != null){
-            if (position[0] > capacity || position[0] < 0)
-                throw new ParkingLotException("No such Space Present");
-            this.vehicles.set(position[0] - 1, vehicle);
-            this.parkingTime.put(vehicle, calendar.getTime());
-        } else if (capacity > 0) this.vehicles.set(vehicles.indexOf(null), vehicle);
-        else this.vehicles.add(vehicle);
+        if (slots.length > 0) {
+            if (!parkingLotSlot.containsKey(slots[0]))
+                throw new ParkingLotException("No such lot Present");
+            this.slot = slots[0];
+        } else this.slot = this.slotWithMaxSpace();
+        parkingLotSlot.get(slot).add(vehicle);
+        this.vehicles.add(vehicle);
+
         for (ParkingLotObserver observer : observers) {
-            observer.parkingLotFull(this.vehicles.size() == this.capacity && !this.vehicles.contains(null));
+            observer.parkingLotFull(this.vehicles.size() == this.capacity);
         }
     }
 
-    public int getVehiclePosition(Object vehicle) {
-        return this.vehicles.indexOf(vehicle) + 1;
-    }
-
-    public boolean isVehicleParked(Object vehicle) {
+    public boolean isVehicleParked(Vehicle vehicle) {
         return this.vehicles.contains(vehicle);
     }
 
-    public void unPark(Object vehicle) throws ParkingLotException {
+    public void unPark(Vehicle vehicle) throws ParkingLotException {
         if (vehicle == null || !this.vehicles.contains(vehicle))
             throw new ParkingLotException("No Such Vehicle In Parking Lot");
         if (this.vehicles.contains(vehicle)){
+            ParkingSlot slot = this.getSlot(vehicle);
+            this.parkingLotSlot.get(slot).remove(vehicle);
             this.vehicles.remove(vehicle);
             for (ParkingLotObserver observer : observers) {
-                observer.parkingLotFull(this.vehicles.size() > this.capacity);
+                observer.parkingLotFull(this.vehicles.size() == this.capacity);
             }
         }
     }
 
-    public  boolean isVehicleUnParked(Object vehicle) {
+    public  boolean isVehicleUnParked(Vehicle vehicle) {
         return !this.vehicles.contains(vehicle);
+    }
+
+    public ParkingSlot getSlot(Vehicle vehicle) {
+        ParkingSlot slots = null;
+        for (ParkingSlot slot : parkingLotSlot.keySet()){
+            if (parkingLotSlot.get(slot).contains(vehicle)){
+                slots = slot;
+                break;
+            }
+        }
+        return slots;
     }
 }
