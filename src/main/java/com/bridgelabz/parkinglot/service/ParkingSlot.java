@@ -1,4 +1,4 @@
-package com.bridgelabz.parkinglot;
+package com.bridgelabz.parkinglot.service;
 
 public class ParkingSlot {
 

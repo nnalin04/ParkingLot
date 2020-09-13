@@ -1,7 +1,7 @@
 package com.bridgelabz.parkinglot.service;
 
-import com.bridgelabz.parkinglot.ParkingSlot;
-import com.bridgelabz.parkinglot.Vehicle;
+import com.bridgelabz.parkinglot.Rider;
+import com.bridgelabz.parkinglot.pojo.Vehicle;
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
 import com.bridgelabz.parkinglot.observer.ParkingLotObserver;
 
@@ -35,20 +35,27 @@ public class ParkingLotSystem {
         this.observers.add(observer);
     }
 
-    private ParkingSlot slotWithMaxSpace() {
-        ParkingSlot slots = null;
+    private void availableSlots(Rider rideType) {
         int minSize = 0;
         int size = 0;
-        for (ParkingSlot slot : this.parkingLotSlot.keySet()) {
-            size = parkingLotSlot.get(slot).size();
-            if (size == 0)
-                slots = slot;
-            else if (size < minSize){
-                minSize = size;
-                slots = slot;
+        if (rideType == Rider.HANDICAP){
+            for (ParkingSlot slots : this.parkingLotSlot.keySet()) {
+                if (parkingLotSlot.get(slots).size() < slots.parkingCapacity)
+                    this.slot = slots;
             }
         }
-        return slots;
+        if (rideType == Rider.NORMAL || rideType == Rider.LARGE){
+            for (ParkingSlot slots : this.parkingLotSlot.keySet()) {
+                size = parkingLotSlot.get(slots).size();
+                if (size == 0){
+                    this.slot = slots;
+                    break;
+                } else if (size < minSize){
+                    minSize = size;
+                    this.slot = slots;
+                }
+            }
+        }
     }
 
     public void park(Vehicle vehicle, ParkingSlot... slots) throws ParkingLotException {
@@ -60,8 +67,15 @@ public class ParkingLotSystem {
             if (!parkingLotSlot.containsKey(slots[0]))
                 throw new ParkingLotException("No such lot Present");
             this.slot = slots[0];
-        } else this.slot = this.slotWithMaxSpace();
-        parkingLotSlot.get(slot).add(vehicle);
+        } else {
+            if (vehicle.rider == Rider.HANDICAP)
+                this.availableSlots(Rider.HANDICAP);
+            if (vehicle.rider == Rider.NORMAL)
+                this.availableSlots(Rider.NORMAL);
+            if (vehicle.rider == Rider.LARGE)
+                this.availableSlots(Rider.LARGE);
+        }
+        parkingLotSlot.get(this.slot).add(vehicle);
         this.vehicles.add(vehicle);
 
         for (ParkingLotObserver observer : observers) {

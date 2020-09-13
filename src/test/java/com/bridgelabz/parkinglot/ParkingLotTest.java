@@ -3,7 +3,9 @@ package com.bridgelabz.parkinglot;
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
 import com.bridgelabz.parkinglot.model.AirportSecurity;
 import com.bridgelabz.parkinglot.model.ParkingLotOwner;
+import com.bridgelabz.parkinglot.pojo.Vehicle;
 import com.bridgelabz.parkinglot.service.ParkingLotSystem;
+import com.bridgelabz.parkinglot.service.ParkingSlot;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,10 +23,10 @@ public class ParkingLotTest {
     @Before
     public void setUp() throws Exception {
         parkingLotSystem = new ParkingLotSystem(1);
-        vehicle = new Vehicle();
-        vehicle1 = new Vehicle();
-        vehicle2 = new Vehicle();
-        vehicle3 = new Vehicle();
+        vehicle = new Vehicle(Rider.NORMAL);
+        vehicle1 = new Vehicle(Rider.NORMAL);
+        vehicle2 = new Vehicle(Rider.NORMAL);
+        vehicle3 = new Vehicle(Rider.NORMAL);
         owner = new ParkingLotOwner();
         airportSecurity = new AirportSecurity();
         parkingLotSystem.registerParkingLotObserver(owner);
@@ -254,5 +256,38 @@ public class ParkingLotTest {
         ParkingSlot parkedSlot3 = parkingLotSystem.getSlot(vehicle2);
         ParkingSlot parkedSlot4 = parkingLotSystem.getSlot(vehicle3);
         Assert.assertTrue(parkedSlot1 != parkedSlot2 && parkedSlot3 != parkedSlot4 );
+    }
+
+    @Test
+    public void givenHandicapRider_WhenParked_ShouldReturnNearestSpaceAvailable() throws ParkingLotException {
+        ParkingSlot slot1 = new ParkingSlot(2);
+        ParkingSlot slot2 = new ParkingSlot(2);
+        ParkingSlot slot3 = new ParkingSlot(2);
+        Vehicle vehicle = new Vehicle(Rider.HANDICAP);
+        parkingLotSystem.totalParkingSpace(6);
+        parkingLotSystem.setParkingLot(slot1);
+        parkingLotSystem.setParkingLot(slot2);
+        parkingLotSystem.setParkingLot(slot3);
+        parkingLotSystem.park(vehicle);
+        ParkingSlot parkedSlot1 = parkingLotSystem.getSlot(vehicle);
+        Assert.assertEquals(slot1, parkedSlot1);
+    }
+
+    @Test
+    public void givenLargeVehicle_WhenParkedShouldReturnTheMostSpaciousSlot() throws ParkingLotException {
+        ParkingSlot slot1 = new ParkingSlot(2);
+        ParkingSlot slot2 = new ParkingSlot(2);
+        ParkingSlot slot3 = new ParkingSlot(2);
+        Vehicle vehicle = new Vehicle(Rider.LARGE);
+        parkingLotSystem.totalParkingSpace(6);
+        parkingLotSystem.setParkingLot(slot1);
+        parkingLotSystem.setParkingLot(slot2);
+        parkingLotSystem.setParkingLot(slot3);
+        parkingLotSystem.park(vehicle1, slot3);
+        parkingLotSystem.park(vehicle2, slot2);
+        parkingLotSystem.park(vehicle3, slot3);
+        parkingLotSystem.park(vehicle);
+        ParkingSlot parkedSlot1 = parkingLotSystem.getSlot(vehicle);
+        Assert.assertEquals(slot1, parkedSlot1);
     }
 }
