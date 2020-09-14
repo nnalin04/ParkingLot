@@ -11,7 +11,7 @@ public class Vehicle {
 
     public Vehicle(String color) {
         this.color = color;
-        this.vehicleType
+        this.vehicleType = vehicleType;
         this.time = Calendar.getInstance().getTime();
     }
 }
