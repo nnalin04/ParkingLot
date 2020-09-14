@@ -1,10 +1,10 @@
 package com.bridgelabz.parkinglot.service;
 
-public class ParkingSlot {
+public class ParkingLots {
 
     public int parkingCapacity;
 
-    public ParkingSlot(int parkingCapacity) {
+    public ParkingLots(int parkingCapacity) {
         this.parkingCapacity = parkingCapacity;
     }
 }
