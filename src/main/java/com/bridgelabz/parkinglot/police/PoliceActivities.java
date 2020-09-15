@@ -1,4 +1,4 @@
-package com.bridgelabz.parkinglot;
+package com.bridgelabz.parkinglot.police;
 
 import com.bridgelabz.parkinglot.parkingStrategy.HandicapStrategy;
 import com.bridgelabz.parkinglot.pojo.Vehicle;
@@ -15,14 +15,14 @@ public class PoliceActivities {
     long currentTime;
     long timeBefore30Min;
 
-    PoliceActivities(){
+    public PoliceActivities(){
         this.vehicles = new ArrayList<>();
         this.vehicleMap = new HashMap<>();
         this.currentTime = new Date().getTime();
         this.timeBefore30Min = currentTime - 1800000;
     }
 
-    public List<Vehicle> searchWhiteVehicle(ParkingLotSystem parkingLotSystem) {
+    public List<Vehicle> searchVehicle(ParkingLotSystem parkingLotSystem) {
         for (ParkingLot lot : parkingLotSystem.getParkingLot()){
             vehicles.addAll(lot.slots.stream()
                     .filter(vehicle -> vehicle.color.equals("white"))
@@ -59,10 +59,19 @@ public class PoliceActivities {
         return this.vehicles;
     }
 
-    public List<Vehicle> SearchHandicapRiders(ParkingLotSystem parkingLotSystem, ParkingLot... lots) {
+    public List<Vehicle> SearchHandicapRiders(ParkingLot... lots) {
         for (ParkingLot lot : lots){
             vehicles.addAll(lot.slots.stream()
                     .filter(vehicle -> vehicle.riderType.equals(HandicapStrategy.HANDICAP))
+                    .collect(Collectors.toList()));
+        }
+        return vehicles;
+    }
+
+    public List<Vehicle> SearchForFraudulentPlate(ParkingLotSystem parkingLotSystem) {
+        for (ParkingLot lot : parkingLotSystem.getParkingLot()){
+            vehicles.addAll(lot.slots.stream()
+                    .filter(vehicle -> vehicle.plateNo.equals("XXX"))
                     .collect(Collectors.toList()));
         }
         return vehicles;

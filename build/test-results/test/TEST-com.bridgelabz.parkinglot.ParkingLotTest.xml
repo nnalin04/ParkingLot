@@ -1,7 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.parkinglot.ParkingLotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-09-15T02:11:25" hostname="EEE1407203" time="0.066">
+<testsuite name="com.bridgelabz.parkinglot.ParkingLotTest" tests="28" skipped="0" failures="0" errors="0" timestamp="2020-09-15T03:35:13" hostname="EEE1407203" time="1.503">
   <properties/>
-  <testcase name="givenHandicapVehicles_WhenSearchedInBAndDLot_ShouldReturnVehicleDetail" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.066"/>
+  <testcase name="givenVehicles_WhenBlueToyotaSearched_ShouldReturnDetail" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="1.263"/>
+  <testcase name="givenVehicleWithColor_WhenAskedForWhiteColor_ShouldReturnWhiteVehicleList" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.054"/>
+  <testcase name="givenEmptyParkingLot_WhenOwnerKnows_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenNoVehicle_WhenUnpParked_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.005"/>
+  <testcase name="givenFullParkingLot_WhenOwnerKnows_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenMoreLargeVehicle_WhenParkedShouldReturnTheMostSpaciousSlot" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenCapacityIs2AndWithSimilarVehicle_ShouldBeAbleToParkTeoVehicle" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenParkingLot_WhenSpaceNotAvailable_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenAParkedVehicle_WhenPositionSearched_ShouldReturnPosition" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.004"/>
+  <testcase name="givenFullParkingLot_WhenMoreVehicleAdded_ShouldReturnFull" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.081"/>
+  <testcase name="givenVehicles_WhenBMWSearched_ShouldReturnVehicleList" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenAVehicle_WhenParked_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenHandicapRider_WhenParked_ShouldReturnNearestSpaceAvailable" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenHandicapVehicles_WhenSearchedInBAndDLot_ShouldReturnVehicleDetail" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenParkingLot_WhenSpaceAvailable_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenParkingLot_WhenOwnerSpecifySpace_ShouldBeParkedInThatSpace" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.004"/>
+  <testcase name="givenLargeVehicle_WhenParkedShouldReturnTheMostSpaciousSlot" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenAParkedVehicle_WhenSearchedBySlot_ShouldReturnSlotPosition" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.004"/>
+  <testcase name="givenBlackVehicle_WhenAskedForWhiteColor_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenEmptyParkingLot_WhenAirportSecurityKnows_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenAVehicle_WhenUnParked_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenFullParkingLot_WhenAirportSecurityKnows_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenCapacityIs2_ShouldBeAbleToParkTwoVehicle" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenVehicles_WhenCheckedForFraudulentPlate_ShouldReturnVehicleDetail" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenUnPresentVehicle_WhenUnParked_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.008"/>
+  <testcase name="givenAVehicle_WhenAlreadyParked_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.007"/>
+  <testcase name="givenVehicles_WhenSearchedForLast30Min_ShouldReturnVehicleList" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.018"/>
+  <testcase name="givenParkingLot_WhenOwnerSpecifyUnavailableSpace_ShouldBeParkedInThatSpace" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[com.bridgelabz.parkinglot.exception.ParkingLotException: Parking Lot is Full
+	at com.bridgelabz.parkinglot.service.ParkingLotSystem.park(ParkingLotSystem.java:40)
+	at com.bridgelabz.parkinglot.ParkingLotTest.givenFullParkingLot_WhenMoreVehicleAdded_ShouldReturnFull(ParkingLotTest.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.mockito.internal.junit.JUnitRule$1.evaluateSafely(JUnitRule.java:63)
+	at org.mockito.internal.junit.JUnitRule$1.evaluate(JUnitRule.java:43)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
+	at java.lang.Thread.run(Thread.java:745)
+]]></system-err>
 </testsuite>

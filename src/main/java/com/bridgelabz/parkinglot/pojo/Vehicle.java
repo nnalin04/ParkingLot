@@ -12,7 +12,7 @@ public class Vehicle {
     public final long time;
     public final String vehicleType;
     private final String attendant;
-    private final String plateNo;
+    public final String plateNo;
     public ParkingLotStrategy riderType;
 
     public Vehicle(String color, String vehicleType, String plateNo, String attendant, ParkingLotStrategy strategy) {
