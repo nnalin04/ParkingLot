@@ -4,28 +4,25 @@ import com.bridgelabz.parkinglot.service.ParkingLot;
 import java.util.List;
 
 public enum LargeStrategy implements ParkingLotStrategy {
+
     LARGE;
-    int minSize;
-    int size;
 
     @Override
     public ParkingLot getSlot(List<ParkingLot> lots) {
-
-        if (lots.size() == 1){
-            return lots.get(0);
-        }
-
-        ParkingLot slot = null;
-        for (ParkingLot lot : lots){
-            size = lot.slots.size();
-            if (size == 0){
-                slot =  lot;
-                break;
-            } else if (size <= minSize){
-                this.minSize = size;
-                slot = lot;
+        for (int i = 0; i < lots.size(); i++)
+        {
+            if (lots.get(i).slots.size() == 0)
+                return lots.get(i);
+            for (int j = i + 1; j < lots.size(); j++)
+            {
+                if (lots.get(i).slots.size() > lots.get(j).slots.size())
+                {
+                    ParkingLot temp = lots.get(i);
+                    lots.set(i, lots.get(j));
+                    lots.set(j, temp);
+                }
             }
         }
-        return slot;
+        return lots.get(0);
     }
 }

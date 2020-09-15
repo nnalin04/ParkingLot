@@ -13,6 +13,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.List;
+import java.util.Map;
 
 public class ParkingLotTest {
 
@@ -21,18 +22,20 @@ public class ParkingLotTest {
     Vehicle vehicle1 = null;
     Vehicle vehicle2 = null;
     Vehicle vehicle3 = null;
+    Vehicle vehicle4 = null;
     ParkingLotOwner owner = null;
     AirportSecurity airportSecurity = null;
     PoliceActivities police = null;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         parkingLotSystem = new ParkingLotSystem(1);
 
-        vehicle = new Vehicle("white");
-        vehicle1 = new Vehicle("black");
-        vehicle2 = new Vehicle("blue");
-        vehicle3 = new Vehicle("white");
+        vehicle = new Vehicle("white", "Toyota", "ABC", "tom", NormalStrategy.NORMAL);
+        vehicle1 = new Vehicle("black", "Toyota", "ABD", "tom", NormalStrategy.NORMAL);
+        vehicle2 = new Vehicle("blue", "BMW", "ABE", "dic", NormalStrategy.NORMAL);
+        vehicle3 = new Vehicle("white", "BMW", "ABF", "tom", NormalStrategy.NORMAL);
+        vehicle4 = new Vehicle("blue", "Toyota", "ABG", "harry", NormalStrategy.NORMAL);
 
         owner = new ParkingLotOwner();
         airportSecurity = new AirportSecurity();
@@ -65,7 +68,6 @@ public class ParkingLotTest {
             parkingLotSystem.isVehicleParked(vehicle1);
         } catch (ParkingLotException e) {
             Assert.assertEquals("Parking Lot is Full", e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -118,6 +120,19 @@ public class ParkingLotTest {
             boolean isFull = owner.isParkingLotFull();
             Assert.assertTrue(isFull);
         } catch (ParkingLotException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenFullParkingLot_WhenMoreVehicleAdded_ShouldReturnFull() {
+        ParkingLot slot1 = new ParkingLot(1);
+        parkingLotSystem.setParkingLot(slot1);
+        try {
+            parkingLotSystem.park(vehicle, NormalStrategy.NORMAL);
+            parkingLotSystem.park(vehicle1, NormalStrategy.NORMAL);
+        } catch (ParkingLotException e) {
+            Assert.assertEquals("Parking Lot is Full", e.getMessage());
             e.printStackTrace();
         }
     }
@@ -273,7 +288,8 @@ public class ParkingLotTest {
         ParkingLot slot1 = new ParkingLot(2);
         ParkingLot slot2 = new ParkingLot(2);
         ParkingLot slot3 = new ParkingLot(2);
-        Vehicle vehicle = new Vehicle("white");
+        Vehicle vehicle = new Vehicle
+                          ("white", "BMW", "ABC", "tom", HandicapStrategy.HANDICAP);
         parkingLotSystem.totalParkingSpace(6);
         parkingLotSystem.setParkingLot(slot1);
         parkingLotSystem.setParkingLot(slot2);
@@ -288,7 +304,8 @@ public class ParkingLotTest {
         ParkingLot slot1 = new ParkingLot(2);
         ParkingLot slot2 = new ParkingLot(2);
         ParkingLot slot3 = new ParkingLot(2);
-        Vehicle vehicle = new Vehicle("white");
+        Vehicle vehicle = new Vehicle
+                          ("white", "BMW","ABC", "tom", NormalStrategy.NORMAL);
         parkingLotSystem.totalParkingSpace(6);
         parkingLotSystem.setParkingLot(slot1);
         parkingLotSystem.setParkingLot(slot2);
@@ -316,7 +333,7 @@ public class ParkingLotTest {
         parkingLotSystem.park(vehicle1, NormalStrategy.NORMAL);
         parkingLotSystem.park(vehicle2, NormalStrategy.NORMAL);
         parkingLotSystem.park(vehicle3, NormalStrategy.NORMAL);
-        List<Vehicle> whiteVehicles = police.checkWhiteCars(parkingLotSystem);
+        List<Vehicle> whiteVehicles = police.searchWhiteVehicle(parkingLotSystem);
         boolean hasVehicle = whiteVehicles.contains(vehicle);
         boolean hasVehicle1 = whiteVehicles.contains(vehicle3);
         Assert.assertTrue(hasVehicle && hasVehicle1);
@@ -328,8 +345,98 @@ public class ParkingLotTest {
         parkingLotSystem.totalParkingSpace(1);
         parkingLotSystem.setParkingLot(slot1);
         parkingLotSystem.park(vehicle1, NormalStrategy.NORMAL);
-        List<Vehicle> whiteVehicles = police.checkWhiteCars(parkingLotSystem);
+        List<Vehicle> whiteVehicles = police.searchWhiteVehicle(parkingLotSystem);
         boolean hasVehicle = whiteVehicles.contains(vehicle1);
         Assert.assertFalse(hasVehicle);
+    }
+
+    @Test
+    public void givenVehicles_WhenBlueToyotaSearched_ShouldReturnDetail() throws ParkingLotException {
+        ParkingLot slot1 = new ParkingLot(2);
+        ParkingLot slot2 = new ParkingLot(2);
+        ParkingLot slot3 = new ParkingLot(2);
+        ParkingLot slot4 = new ParkingLot(2);
+        parkingLotSystem.totalParkingSpace(8);
+        parkingLotSystem.setParkingLot(slot1);
+        parkingLotSystem.setParkingLot(slot2);
+        parkingLotSystem.setParkingLot(slot3);
+        parkingLotSystem.setParkingLot(slot4);
+        parkingLotSystem.park(vehicle, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle1, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle2, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle4, NormalStrategy.NORMAL);
+        Map<Vehicle, ParkingLot> vehicles = police.checkForBlueToyota(parkingLotSystem);
+        boolean hasVehicle = vehicles.containsKey(vehicle4);
+        boolean hasVehicle1 = !vehicles.containsKey(vehicle2);
+        Assert.assertTrue(hasVehicle && hasVehicle1);
+    }
+
+    @Test
+    public void givenVehicles_WhenBMWSearched_ShouldReturnVehicleList() throws ParkingLotException {
+        ParkingLot slot1 = new ParkingLot(2);
+        ParkingLot slot2 = new ParkingLot(2);
+        ParkingLot slot3 = new ParkingLot(2);
+        ParkingLot slot4 = new ParkingLot(2);
+        parkingLotSystem.totalParkingSpace(8);
+        parkingLotSystem.setParkingLot(slot1);
+        parkingLotSystem.setParkingLot(slot2);
+        parkingLotSystem.setParkingLot(slot3);
+        parkingLotSystem.setParkingLot(slot4);
+        parkingLotSystem.park(vehicle, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle1, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle2, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle4, NormalStrategy.NORMAL);
+        List<Vehicle> vehicles = police.SearchBMW(parkingLotSystem);
+        boolean hasVehicle = vehicles.contains(vehicle2);
+        boolean hasVehicle1 = !vehicles.contains(vehicle4);
+        Assert.assertTrue(hasVehicle && hasVehicle1);
+    }
+
+    @Test
+    public void givenVehicles_WhenSearchedForLast30Min_ShouldReturnVehicleList() throws ParkingLotException {
+        ParkingLot slot1 = new ParkingLot(2);
+        ParkingLot slot2 = new ParkingLot(2);
+        ParkingLot slot3 = new ParkingLot(2);
+        ParkingLot slot4 = new ParkingLot(2);
+        parkingLotSystem.totalParkingSpace(8);
+        parkingLotSystem.setParkingLot(slot1);
+        parkingLotSystem.setParkingLot(slot2);
+        parkingLotSystem.setParkingLot(slot3);
+        parkingLotSystem.setParkingLot(slot4);
+        parkingLotSystem.park(vehicle, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle1, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle2, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle4, NormalStrategy.NORMAL);
+        List<Vehicle> vehicles = police.SearchVehicleForLast30Min(parkingLotSystem);
+        boolean hasVehicle = vehicles.contains(vehicle);
+        boolean hasVehicle1 = vehicles.contains(vehicle1);
+        boolean hasVehicle2 = vehicles.contains(vehicle2);
+        boolean hasVehicle4 = vehicles.contains(vehicle4);
+        Assert.assertTrue(hasVehicle && hasVehicle1 && hasVehicle2 && hasVehicle4);
+    }
+
+    @Test
+    public void givenHandicapVehicles_WhenSearchedInBAndDLot_ShouldReturnVehicleDetail()
+            throws ParkingLotException {
+        ParkingLot A = new ParkingLot(2);
+        ParkingLot B = new ParkingLot(2);
+        ParkingLot C = new ParkingLot(2);
+        ParkingLot D = new ParkingLot(2);
+        parkingLotSystem.totalParkingSpace(8);
+        vehicle = new Vehicle("white", "BMW", "ABC", "tom", HandicapStrategy.HANDICAP);
+        parkingLotSystem.setParkingLot(A);
+        parkingLotSystem.setParkingLot(B);
+        parkingLotSystem.setParkingLot(C);
+        parkingLotSystem.setParkingLot(D);
+        parkingLotSystem.park(vehicle, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle1, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle2, NormalStrategy.NORMAL);
+        parkingLotSystem.park(vehicle4, NormalStrategy.NORMAL);
+        List<Vehicle> vehicles = police.SearchHandicapRiders(parkingLotSystem, A, B);
+        boolean hasVehicle = vehicles.contains(vehicle);
+        boolean hasVehicle1 = !vehicles.contains(vehicle1);
+        boolean hasVehicle2 = !vehicles.contains(vehicle2);
+        boolean hasVehicle4 = !vehicles.contains(vehicle4);
+        Assert.assertTrue(hasVehicle && hasVehicle1 && hasVehicle2 && hasVehicle4);
     }
 }

@@ -88,7 +88,7 @@ public class ParkingLotSystem {
         return null;
     }
 
-    public List<ParkingLot> gatParkingLot() {
+    public List<ParkingLot> getParkingLot() {
         return this.lots;
     }
 }
