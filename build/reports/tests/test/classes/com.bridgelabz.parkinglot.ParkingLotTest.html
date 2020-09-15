@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">28</div>
+<div class="counter">29</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.484s</div>
+<div class="counter">1.520s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,17 +79,17 @@
 </thead>
 <tr>
 <td class="success">givenAParkedVehicle_WhenPositionSearched_ShouldReturnPosition</td>
-<td class="success">0.004s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenAParkedVehicle_WhenSearchedBySlot_ShouldReturnSlotPosition</td>
-<td class="success">0.004s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenAVehicle_WhenAlreadyParked_ShouldReturnTrue</td>
-<td class="success">0.007s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -99,77 +99,82 @@
 </tr>
 <tr>
 <td class="success">givenAVehicle_WhenUnParked_ShouldReturnTrue</td>
-<td class="success">0.001s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenBlackVehicle_WhenAskedForWhiteColor_ShouldReturnFalse</td>
-<td class="success">0.002s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenCapacityIs2AndWithSimilarVehicle_ShouldBeAbleToParkTeoVehicle</td>
-<td class="success">0.003s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenCapacityIs2_ShouldBeAbleToParkTwoVehicle</td>
-<td class="success">0.001s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenEmptyParkingLot_WhenAirportSecurityKnows_ShouldReturnFalse</td>
-<td class="success">0.001s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenEmptyParkingLot_WhenOwnerKnows_ShouldReturnFalse</td>
-<td class="success">0.001s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenFullParkingLot_WhenAirportSecurityKnows_ShouldReturnTrue</td>
-<td class="success">0.003s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenFullParkingLot_WhenMoreVehicleAdded_ShouldReturnFull</td>
-<td class="success">0.081s</td>
+<td class="success">0.021s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenFullParkingLot_WhenOwnerKnows_ShouldReturnTrue</td>
-<td class="success">0.002s</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">givenHandicapRider_WhenParkedWithoutAvailableSlot_ShouldReturnNearestSpaceAvailable</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenHandicapRider_WhenParked_ShouldReturnNearestSpaceAvailable</td>
-<td class="success">0.003s</td>
+<td class="success">0.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenHandicapVehicles_WhenSearchedInBAndDLot_ShouldReturnVehicleDetail</td>
-<td class="success">0.002s</td>
+<td class="success">0.010s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenLargeVehicle_WhenParkedShouldReturnTheMostSpaciousSlot</td>
-<td class="success">0.003s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenMoreLargeVehicle_WhenParkedShouldReturnTheMostSpaciousSlot</td>
-<td class="success">0.003s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenNoVehicle_WhenUnpParked_ShouldReturnFalse</td>
-<td class="success">0.005s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenParkingLot_WhenOwnerSpecifySpace_ShouldBeParkedInThatSpace</td>
-<td class="success">0.004s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -179,7 +184,7 @@
 </tr>
 <tr>
 <td class="success">givenParkingLot_WhenSpaceAvailable_ShouldReturnTrue</td>
-<td class="success">0.002s</td>
+<td class="success">0.008s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -189,32 +194,32 @@
 </tr>
 <tr>
 <td class="success">givenUnPresentVehicle_WhenUnParked_ShouldReturnFalse</td>
-<td class="success">0.008s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenVehicleWithColor_WhenAskedForWhiteColor_ShouldReturnWhiteVehicleList</td>
-<td class="success">0.054s</td>
+<td class="success">0.093s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenVehicles_WhenBMWSearched_ShouldReturnVehicleList</td>
-<td class="success">0.003s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenVehicles_WhenBlueToyotaSearched_ShouldReturnDetail</td>
-<td class="success">1.263s</td>
+<td class="success">1.319s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenVehicles_WhenCheckedForFraudulentPlate_ShouldReturnVehicleDetail</td>
-<td class="success">0.003s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenVehicles_WhenSearchedForLast30Min_ShouldReturnVehicleList</td>
-<td class="success">0.018s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -286,7 +291,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.3</a> at 15 Sep, 2020 9:05:15 AM</p>
+<a href="http://www.gradle.org">Gradle 6.3</a> at 15 Sep, 2020 9:21:03 AM</p>
 </div>
 </div>
 </body>

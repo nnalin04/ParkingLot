@@ -294,6 +294,26 @@ public class ParkingLotTest {
     }
 
     @Test
+    public void givenHandicapRider_WhenParkedWithoutAvailableSlot_ShouldReturnNearestSpaceAvailable() {
+        ParkingLot slot1 = new ParkingLot(2);
+        Vehicle vehicle = new Vehicle
+                ("white", "BMW", "ABC", "tom", HandicapStrategy.HANDICAP);
+        Vehicle vehicle4 = new Vehicle
+                ("white", "Lamborghini","ABC", "tom", HandicapStrategy.HANDICAP);
+        Vehicle vehicle5 = new Vehicle
+                ("white", "LOTUS","ABC", "tom", HandicapStrategy.HANDICAP);
+        parkingLotSystem.totalParkingSpace(6);
+        parkingLotSystem.setParkingLot(slot1);
+        try {
+            parkingLotSystem.park(vehicle, HandicapStrategy.HANDICAP);
+            parkingLotSystem.park(vehicle4, HandicapStrategy.HANDICAP);
+            parkingLotSystem.park(vehicle5, HandicapStrategy.HANDICAP);
+        } catch (ParkingLotException e) {
+            Assert.assertEquals("No empty lot Available", e.getMessage());
+        }
+    }
+
+    @Test
     public void givenLargeVehicle_WhenParkedShouldReturnTheMostSpaciousSlot() throws ParkingLotException {
         ParkingLot slot1 = new ParkingLot(2);
         ParkingLot slot2 = new ParkingLot(2);

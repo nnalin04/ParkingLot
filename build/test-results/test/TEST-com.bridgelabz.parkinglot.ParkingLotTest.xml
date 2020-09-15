@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.parkinglot.ParkingLotTest" tests="28" skipped="0" failures="0" errors="0" timestamp="2020-09-15T03:35:13" hostname="EEE1407203" time="1.503">
+<testsuite name="com.bridgelabz.parkinglot.ParkingLotTest" tests="29" skipped="0" failures="0" errors="0" timestamp="2020-09-15T03:51:01" hostname="EEE1407203" time="1.558">
   <properties/>
-  <testcase name="givenVehicles_WhenBlueToyotaSearched_ShouldReturnDetail" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="1.263"/>
-  <testcase name="givenVehicleWithColor_WhenAskedForWhiteColor_ShouldReturnWhiteVehicleList" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.054"/>
-  <testcase name="givenEmptyParkingLot_WhenOwnerKnows_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenNoVehicle_WhenUnpParked_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.005"/>
-  <testcase name="givenFullParkingLot_WhenOwnerKnows_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
-  <testcase name="givenMoreLargeVehicle_WhenParkedShouldReturnTheMostSpaciousSlot" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
-  <testcase name="givenCapacityIs2AndWithSimilarVehicle_ShouldBeAbleToParkTeoVehicle" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenVehicles_WhenBlueToyotaSearched_ShouldReturnDetail" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="1.319"/>
+  <testcase name="givenVehicleWithColor_WhenAskedForWhiteColor_ShouldReturnWhiteVehicleList" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.093"/>
+  <testcase name="givenEmptyParkingLot_WhenOwnerKnows_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenNoVehicle_WhenUnpParked_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenFullParkingLot_WhenOwnerKnows_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenMoreLargeVehicle_WhenParkedShouldReturnTheMostSpaciousSlot" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenCapacityIs2AndWithSimilarVehicle_ShouldBeAbleToParkTeoVehicle" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
   <testcase name="givenParkingLot_WhenSpaceNotAvailable_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenAParkedVehicle_WhenPositionSearched_ShouldReturnPosition" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.004"/>
-  <testcase name="givenFullParkingLot_WhenMoreVehicleAdded_ShouldReturnFull" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.081"/>
-  <testcase name="givenVehicles_WhenBMWSearched_ShouldReturnVehicleList" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenAParkedVehicle_WhenPositionSearched_ShouldReturnPosition" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.005"/>
+  <testcase name="givenFullParkingLot_WhenMoreVehicleAdded_ShouldReturnFull" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.021"/>
+  <testcase name="givenVehicles_WhenBMWSearched_ShouldReturnVehicleList" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
   <testcase name="givenAVehicle_WhenParked_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenHandicapRider_WhenParked_ShouldReturnNearestSpaceAvailable" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
-  <testcase name="givenHandicapVehicles_WhenSearchedInBAndDLot_ShouldReturnVehicleDetail" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
-  <testcase name="givenParkingLot_WhenSpaceAvailable_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
-  <testcase name="givenParkingLot_WhenOwnerSpecifySpace_ShouldBeParkedInThatSpace" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.004"/>
-  <testcase name="givenLargeVehicle_WhenParkedShouldReturnTheMostSpaciousSlot" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
-  <testcase name="givenAParkedVehicle_WhenSearchedBySlot_ShouldReturnSlotPosition" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.004"/>
-  <testcase name="givenBlackVehicle_WhenAskedForWhiteColor_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
-  <testcase name="givenEmptyParkingLot_WhenAirportSecurityKnows_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenAVehicle_WhenUnParked_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenFullParkingLot_WhenAirportSecurityKnows_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
-  <testcase name="givenCapacityIs2_ShouldBeAbleToParkTwoVehicle" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
-  <testcase name="givenVehicles_WhenCheckedForFraudulentPlate_ShouldReturnVehicleDetail" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
-  <testcase name="givenUnPresentVehicle_WhenUnParked_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.008"/>
-  <testcase name="givenAVehicle_WhenAlreadyParked_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.007"/>
-  <testcase name="givenVehicles_WhenSearchedForLast30Min_ShouldReturnVehicleList" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.018"/>
+  <testcase name="givenHandicapRider_WhenParked_ShouldReturnNearestSpaceAvailable" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.014"/>
+  <testcase name="givenHandicapVehicles_WhenSearchedInBAndDLot_ShouldReturnVehicleDetail" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.01"/>
+  <testcase name="givenParkingLot_WhenSpaceAvailable_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.008"/>
+  <testcase name="givenParkingLot_WhenOwnerSpecifySpace_ShouldBeParkedInThatSpace" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.005"/>
+  <testcase name="givenLargeVehicle_WhenParkedShouldReturnTheMostSpaciousSlot" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenHandicapRider_WhenParkedWithoutAvailableSlot_ShouldReturnNearestSpaceAvailable" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.004"/>
+  <testcase name="givenAParkedVehicle_WhenSearchedBySlot_ShouldReturnSlotPosition" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenBlackVehicle_WhenAskedForWhiteColor_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenEmptyParkingLot_WhenAirportSecurityKnows_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenAVehicle_WhenUnParked_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenFullParkingLot_WhenAirportSecurityKnows_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.002"/>
+  <testcase name="givenCapacityIs2_ShouldBeAbleToParkTwoVehicle" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.003"/>
+  <testcase name="givenVehicles_WhenCheckedForFraudulentPlate_ShouldReturnVehicleDetail" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.005"/>
+  <testcase name="givenUnPresentVehicle_WhenUnParked_ShouldReturnFalse" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenAVehicle_WhenAlreadyParked_ShouldReturnTrue" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
+  <testcase name="givenVehicles_WhenSearchedForLast30Min_ShouldReturnVehicleList" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.005"/>
   <testcase name="givenParkingLot_WhenOwnerSpecifyUnavailableSpace_ShouldBeParkedInThatSpace" classname="com.bridgelabz.parkinglot.ParkingLotTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[com.bridgelabz.parkinglot.exception.ParkingLotException: Parking Lot is Full

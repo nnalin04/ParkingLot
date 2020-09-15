@@ -1,9 +1,10 @@
 package com.bridgelabz.parkinglot.parkingStrategy;
 
+import com.bridgelabz.parkinglot.exception.ParkingLotException;
 import com.bridgelabz.parkinglot.service.ParkingLot;
 
 import java.util.List;
 
 public interface ParkingLotStrategy {
-    ParkingLot getSlot(List<ParkingLot> lots);
+    ParkingLot getSlot(List<ParkingLot> lots) throws ParkingLotException;
 }
